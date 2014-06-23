@@ -1,0 +1,209 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://placer-siftech.appspot.com/_ah/api",
+  "name" : "searchobjectendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://placer-siftech.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "backend.placer",
+  "ownerName" : "backend.placer",
+  "methods" : {
+    "searchobjectendpoint.insertSearchObject" : {
+      "path" : "searchobject",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "placer.backend.SearchObjectEndpoint.insertSearchObject",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "searchobjectendpoint.updateSearchObject" : {
+      "path" : "searchobject",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "placer.backend.SearchObjectEndpoint.updateSearchObject",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "searchobjectendpoint.removeSearchObject" : {
+      "path" : "searchobject/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "placer.backend.SearchObjectEndpoint.removeSearchObject",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "searchobjectendpoint.listSearchObject" : {
+      "path" : "searchobject",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "placer.backend.SearchObjectEndpoint.listSearchObject",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "searchobjectendpoint.getSearchObject" : {
+      "path" : "searchobject/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "placer.backend.SearchObjectEndpoint.getSearchObject",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "SearchObject" : {
+        "id" : "SearchObject",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string"
+          },
+          "latitude" : {
+            "type" : "number"
+          },
+          "longitude" : {
+            "type" : "number"
+          },
+          "bearing" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "axisX" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "axisY" : {
+            "type" : "number",
+            "format" : "float"
+          },
+          "axisZ" : {
+            "type" : "number",
+            "format" : "float"
+          }
+        }
+      },
+      "CollectionResponse_SearchObject" : {
+        "id" : "CollectionResponse_SearchObject",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "SearchObject"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "placer.backend.SearchObjectEndpoint.insertSearchObject" : {
+        "request" : {
+          "$ref" : "SearchObject"
+        },
+        "response" : {
+          "$ref" : "SearchObject"
+        }
+      },
+      "placer.backend.SearchObjectEndpoint.updateSearchObject" : {
+        "request" : {
+          "$ref" : "SearchObject"
+        },
+        "response" : {
+          "$ref" : "SearchObject"
+        }
+      },
+      "placer.backend.SearchObjectEndpoint.removeSearchObject" : {
+      },
+      "placer.backend.SearchObjectEndpoint.listSearchObject" : {
+        "response" : {
+          "$ref" : "CollectionResponse_SearchObject"
+        }
+      },
+      "placer.backend.SearchObjectEndpoint.getSearchObject" : {
+        "response" : {
+          "$ref" : "SearchObject"
+        }
+      }
+    }
+  }
+}
