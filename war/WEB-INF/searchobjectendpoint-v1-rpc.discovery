@@ -1,6 +1,6 @@
 {
  "kind": "discovery#rpcDescription",
- "etag": "\"p_qcyFV0KQVqSB1Aq3pqmPu-2MY/p2WVRfCRmxRfG749NC45G_XAK8w\"",
+ "etag": "\"p_qcyFV0KQVqSB1Aq3pqmPu-2MY/GIXAlxKwpjbBUIh2_7YwRXd6uYU\"",
  "discoveryVersion": "v1",
  "id": "searchobjectendpoint:v1",
  "name": "searchobjectendpoint",
@@ -86,6 +86,15 @@
     }
    }
   },
+  "ResultObject": {
+   "id": "ResultObject",
+   "type": "object",
+   "properties": {
+    "name": {
+     "type": "string"
+    }
+   }
+  },
   "SearchObject": {
    "id": "SearchObject",
    "type": "object",
@@ -121,6 +130,25 @@
   }
  },
  "methods": {
+  "searchobjectendpoint.dbTest": {
+   "id": "searchobjectendpoint.dbTest",
+   "parameters": {
+    "gid": {
+     "type": "integer",
+     "required": true,
+     "format": "int32"
+    }
+   },
+   "parameterOrder": [
+    "gid"
+   ],
+   "returns": {
+    "$ref": "ResultObject"
+   },
+   "scopes": [
+    "https://www.googleapis.com/auth/userinfo.email"
+   ]
+  },
   "searchobjectendpoint.getSearchObject": {
    "id": "searchobjectendpoint.getSearchObject",
    "allowGet": true,

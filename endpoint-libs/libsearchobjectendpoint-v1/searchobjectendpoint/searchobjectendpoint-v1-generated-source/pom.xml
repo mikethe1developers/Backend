@@ -8,8 +8,8 @@
 
   <groupId>com.google.apis</groupId>
   <artifactId>google-api-services-searchobjectendpoint</artifactId>
-  <version>v1-rev20140622144134-1.16.0-rc</version>
-  <name>searchobjectendpoint v1 (revision 20140622144134)</name>
+  <version>v1-rev20140623121234-1.16.0-rc</version>
+  <name>searchobjectendpoint v1 (revision 20140623121234)</name>
   <packaging>jar</packaging>
 
   <inceptionYear>2011</inceptionYear>

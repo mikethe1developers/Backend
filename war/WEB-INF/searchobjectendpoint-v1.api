@@ -58,6 +58,27 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
+    "searchobjectendpoint.dbTest" : {
+      "path" : "dbTest/{gid}",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "placer.backend.SearchObjectEndpoint.dbTest",
+      "request" : {
+        "parameters" : {
+          "gid" : {
+            "type" : "int32",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "searchobjectendpoint.removeSearchObject" : {
       "path" : "searchobject/{id}",
       "httpMethod" : "DELETE",
@@ -159,6 +180,15 @@
           }
         }
       },
+      "ResultObject" : {
+        "id" : "ResultObject",
+        "type" : "object",
+        "properties" : {
+          "name" : {
+            "type" : "string"
+          }
+        }
+      },
       "CollectionResponse_SearchObject" : {
         "id" : "CollectionResponse_SearchObject",
         "type" : "object",
@@ -190,6 +220,11 @@
         },
         "response" : {
           "$ref" : "SearchObject"
+        }
+      },
+      "placer.backend.SearchObjectEndpoint.dbTest" : {
+        "response" : {
+          "$ref" : "ResultObject"
         }
       },
       "placer.backend.SearchObjectEndpoint.removeSearchObject" : {

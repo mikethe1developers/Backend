@@ -9,6 +9,11 @@ import com.google.api.server.spi.response.CollectionResponse;
 import com.google.appengine.api.datastore.Cursor;
 import com.google.appengine.datanucleus.query.JDOCursorHelper;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.HashMap;
 import java.util.List;
 
@@ -165,6 +170,38 @@ public class SearchObjectEndpoint {
 
 	private static PersistenceManager getPersistenceManager() {
 		return PMF.get().getPersistenceManager();
+	}
+	
+	/**
+	 * Custom API Methods
+	 */
+	@ApiMethod(name = "dbTest")
+	public ResultObject dbTest(@Named("gid") int gid) {
+		ResultObject ro = new ResultObject();
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		try {
+			Class.forName("org.postgresql.Driver");	
+			connection = DriverManager.getConnection("jdbc:postgresql://postgresql-db1.cp3lk1mrandp.us-west-2.rds.amazonaws.com:5432/dbname", "michael", "jankyur2");
+			if (connection != null) {
+				statement = connection.createStatement();
+				resultSet = statement.executeQuery("SELECT * FROM buildings WHERE gid = 500");
+				while (resultSet.next()) {
+				   ro.setName(resultSet.getString(3)+", "+resultSet.getString(4));
+				} 
+				resultSet.close();
+				statement.close();
+				connection.close();
+			}
+		} 
+		catch (ClassNotFoundException e) {
+			return ro;
+		}
+		catch (SQLException e) {						 
+			return ro;
+		}
+		return ro;
 	}
 
 }
